@@ -1,32 +1,109 @@
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color:blueviolet;
+    background-color: blueviolet;
 }
 
 .container {
-    width: 300px;
-    text-align: center; 
+    width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#task-list{
+#task-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-li{
+li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
-    background-color:#fff;
+    background-color: #fff;
     border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-li.completed{
+li.completed {
     text-decoration: line-through;
-    
+    background-color: #f4f4f4;
+}
+
+input[type="text"] {
+    width: 60%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+input[type="radio"] {
+    margin: 0 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+label {
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+li .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+li .actions button {
+    background-color: #f44336;
+    color: white;
+}
+
+li .actions button:hover {
+    background-color: #d32f2f;
+}
+
+li .actions button:active {
+    background-color: #b71c1c;
+}
+
+input[type="radio"]:checked + label {
+    color: green;
+}
+
+input[type="radio"] {
+    margin: 0 5px;
+}
+
+input[type="text"]:disabled {
+    background-color: #f0f0f0;
+    border: none;
+    color: #666;
 }
