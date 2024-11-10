@@ -38,17 +38,29 @@ const updateTask = async (req, res) => {
     const { id } = req.params;
     const { description, completed } = req.body;
 
+    console.log("Updating task with id:", id);
+    console.log("New description:", description);
+    console.log("New completed status:", completed);
+
     const results = await pool.query(
       "UPDATE tasks SET description = $1, completed = $2 WHERE id = $3 RETURNING *",
       [description, completed, id]
     );
 
+    if (typeof completed !== 'boolean') {
+      console.log("Completed field is not boolean!");
+      return res.status(400).json({ error: "Completed field must be a boolean" });
+    }
+
     if (results.rowCount === 0) {
       return res.status(404).json({ error: "Task not found" });
     }
 
+    console.log("Updated task:", results.rows[0]);
+
     res.status(200).json(results.rows[0]);
   } catch (error) {
+    console.error("Error updating task:", error); 
     res.status(500).json({ error: error.message });
   }
 };
